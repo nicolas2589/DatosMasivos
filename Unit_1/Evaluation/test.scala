@@ -1,5 +1,6 @@
 //Responder las siguientes preguntas con Spark DataFrames y Scala utilizando el “CSV”
 //Netflix_2011_2016.csv que se encuentra el la carpeta de spark-dataframes.
+
 //1. Comienza una simple sesión Spark.
 import org.apache.spark.sql.SparkSession
 val spark = SparkSession.builder().getOrCreate()
@@ -15,7 +16,9 @@ NetflixDf.columns
 NetflixDf.printSchema()
 
 //5. Imprime las primeras 5 columnas.
+//imprimir las 5 columnas por nombre
 NetflicDf.select($"Date",$"Open",$"High",$"Low", $"Close").show()
+//Restar 2 columnas por nombre
 NetflixDf.drop("Volume", "Adj Close").show()
 
 //6. Usa describe () para aprender sobre el DataFrame.
