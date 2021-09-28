@@ -17,7 +17,7 @@ NetflixDf.printSchema()
 
 //5. Imprime las primeras 5 columnas.
 //imprimir las 5 columnas por nombre
-NetflicDf.select($"Date",$"Open",$"High",$"Low", $"Close").show()
+NetflixDf.select($"Date",$"Open",$"High",$"Low", $"Close").show()
 //Restar 2 columnas por nombre
 NetflixDf.drop("Volume", "Adj Close").show()
 
