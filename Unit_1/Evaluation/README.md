@@ -24,7 +24,7 @@ NetflixDf.columns
 
 ```
 
-#Exercise 4
+# Exercise 4
 how is the schema? 
 
 ``` scala
