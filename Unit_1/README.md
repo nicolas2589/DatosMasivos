@@ -1,7 +1,7 @@
 # Unit_1
 
-* [Practice #1](https://github.com/nicolas2589/DatosMasivos/new/Unidad_1/Unit_1/Practice_1)
-* [Practice #2](https://github.com/nicolas2589/DatosMasivos/new/Unidad_1/Unit_1/Practice_2)
-* [Practice #3](https://github.com/nicolas2589/DatosMasivos/new/Unidad_1/Unit_1/Practice_3)
+* [Practice #2](https://github.com/nicolas2589/DatosMasivos/tree/Unidad_1/Unit_1/Practices/Practice_2)
+* [Practice #3](https://github.com/nicolas2589/DatosMasivos/tree/Unidad_1/Unit_1/Practices/Practice_3)
+* [Practice #4](https://github.com/nicolas2589/DatosMasivos/tree/Unidad_1/Unit_1/Practices/Practice_4)
 
-* [Evaluation](https://github.com/nicolas2589/DatosMasivos/new/Unidad_1/Unit_1/Evaluation)
+* [Evaluation](https://github.com/nicolas2589/DatosMasivos/tree/Unidad_1/Unit_1/Evaluation)
