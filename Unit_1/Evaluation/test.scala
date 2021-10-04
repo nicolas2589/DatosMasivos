@@ -43,7 +43,7 @@ MaxDf.select($"Day", $"max(Close)").sort(desc("max(Close)")).show(1)
 //9. Escribe con tus propias palabras en un comentario de tu codigo. ¿Cuál es el
 //significado de la columna Cerrar “Close”?
 
-//
+///La columna “Close” representa el valor de mercado con el que la plataforma Netflix cerró el día.
 
 //10. ¿Cuál es el máximo y mínimo de la columna “Volume”?
 NetflixDf.select(max("Volume"), min("Volume")).show()
