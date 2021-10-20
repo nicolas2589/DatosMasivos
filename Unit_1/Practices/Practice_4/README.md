@@ -1,6 +1,6 @@
-#Practica 4
+# Practica 4
 
-#Exercise 1
+# Exercise 1
 ``` scala
 //1. Algoritmo 1 Versión recursiva descendente
 def fib(num: Int):Int ={
@@ -11,7 +11,7 @@ def fib(num: Int):Int ={
   }
 }
 ```
-#Exercise 2
+# Exercise 2
 ``` scala
 //2. Algoritmo 2 Versión con fórmula explícita
 import scala.math.sqrt
@@ -30,7 +30,7 @@ def fib2(num: Double):Double ={
   return j
 }
 ```
-#Exercise 3
+# Exercise 3
 ``` scala
 //3. Algoritmo 3 Versión iterativa
 def fib3(num: Int):Int ={
@@ -45,7 +45,7 @@ def fib3(num: Int):Int ={
   return a
 }
 ```
-#Exercise 4
+# Exercise 4
 ``` scala
 //4. Algoritmo 4 Versión iterativa 2 variables
 def fib4(num: Int):Int ={
@@ -58,7 +58,7 @@ def fib4(num: Int):Int ={
   return b
 }
 ```
-#Exercise 5
+# Exercise 5
 ``` scala
 //5. Algoritmo 5 Versión iterativa vector
 def fib5(num: Int):Int ={
