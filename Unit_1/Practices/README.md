@@ -1,5 +1,5 @@
 # Pracetices
 
-* [Practice #2](Unit_1/Practices/Practice_2)
-* [Practice #3](Unit_1/Practices/Practice_3)
-* [Practice #4](Unit_1/Practices/Practice_4)
+* [Practice #2](Practice_2)
+* [Practice #3](Practice_3)
+* [Practice #4](Practice_4)
