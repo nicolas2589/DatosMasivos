@@ -1,6 +1,8 @@
 # DatosMasivos
 * Landa Alvarez Ariel Nicolas | 1721531
 * Hernandez Lamarque Victor Fabian | 16212536
+* Guzman Pascacio Jhomara del Rosario | 17210894
+
 # Structure
 - [Unit 1](Unit_1)
   - [Practice #2](Unit_1/Practices/Practice_2)
