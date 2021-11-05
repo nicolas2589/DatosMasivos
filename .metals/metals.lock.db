@@ -1,6 +1,6 @@
 #FileLock
-#Thu Nov 04 16:48:21 PDT 2021
+#Thu Nov 04 19:50:03 PDT 2021
 hostName=uwuntu-B450M-DS3H
-id=17ced5a774388f62d95e4135c7fc1ba7da86e19b5ee
+id=17cee00d102df14be476951ab97841718391a61a3e6
 method=file
-server=127.0.1.1\:42475
+server=127.0.1.1\:33877
