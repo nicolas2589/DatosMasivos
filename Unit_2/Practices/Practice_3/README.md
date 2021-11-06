@@ -88,7 +88,7 @@ println ( s " Predicciones correctas = $ {(predictions.where ( " prediction == i
 println ( s " Predicciones fallidas = $ {(predictions.where ( " prediction! = indexedLabel " ) .count ())} " )
 ```
 
-# Exircese 12
+# Exercese 12
 
 ```scala
 // Show the model
@@ -99,7 +99,7 @@ val  rfModel  = model.stages ( 2 ). asInstanceOf [ RandomForestClassificationMod
 
 # Test2RF
 
-# Exircese 1
+# Exercese 1
 
 ``` scala
 //The necessary libraries are imported
@@ -109,7 +109,7 @@ importar  org . apache . chispa . ml . evaluación . Evaluador de clasificación
 importar  org . apache . chispa . ml . función . { IndexToString , StringIndexer , VectorIndexer , VectorAssembler }
 ```
 
-# Exircese 2
+# Exercese 2
 
 ```scala
 // Load data
@@ -117,7 +117,7 @@ val  dat  = spark.read.option ( " header " , " true " ) .option ( " inferSchema 
   " verdadero " ) csv ( " Titanic.csv " )
 ```
 
-# Exircese 3
+# Exercese 3
 
 ```scala
 // Clear data set
@@ -128,14 +128,14 @@ val  featureIndexer  =  new  VectorAssembler () .setInputCols ( Array ( " iSex "
 val  dt = featureIndexer.transform (datos)
 ```
 
-# Exircese 4
+# Exercese 4
 
 ```scala
 // Separate dataset
 val  Array (trainingData, testData) = dt.randomSplit ( Array ( 0.7 , 0.3 ))
 ```
 
-# Exircese 5
+# Exercese 5
 
 ```scala
 // Characteristics of the model
@@ -146,14 +146,14 @@ val  modelo  = rf.fit (trainingData)
  predicciones de  val = model.transform (testData)
 ```
 
-# Exircese 6
+# Exercese 6
 
 ```scala
 // Show the result
 predicciones mostrar ( 5 )
 ```
 
-# Exircese 7
+# Exercese 7
 
 ```scala
 // Calculate the error
