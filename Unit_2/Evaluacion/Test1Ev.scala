@@ -31,6 +31,8 @@ val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
 val train = splits(0)
 val test = splits(1)
 
+dat.select("Species").groupBy("Species").count().show()
+
 // Especifica las capas de la red neuronal
 // input layer of size 4 (features), two intermediate of size 5 and 4
 // and output of size 3 (classes)
@@ -48,7 +50,12 @@ val result = model.transform(test).select(col("*"),col("prediction").as("predict
 val labelConverter = new IndexToString().setInputCol("predictionIndex").setOutputCol("predictedLabel")
 val prediction = labelConverter.transform(result)
 val labelsPrediction = prediction.select("species","predictedLabel")
-labelsPrediction.show(150)
+labelsPrediction.show()
 //Se obtiene la presicion
 val evaluator = new MulticlassClassificationEvaluator().setMetricName("accuracy")
-println(s"Test set accuracy = ${evaluator.evaluate(predictionAndLabels)}")
+val accuracy = evaluator.evaluate(prediction)
+println(s"Test Error = ${(1.0 - accuracy)}")
+println(s"Test accuracy = ${accuracy}")
+println(s"Num de datos de prueba = ${(prediction.count())}")
+println(s"Predicciones correctas = ${(prediction.where("predictedLabel == species").count())}")
+println(s"Predicciones fallidas = ${(prediction.where("predictedLabel != species").count())}")
