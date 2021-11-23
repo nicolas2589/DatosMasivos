@@ -12,12 +12,12 @@ dat.printSchema()
 //5.-Utilizar el metodo describe
 dat.describe().show()
 
-//6.- mostrar numero de columnas en este caso 5
+//4.- mostrar numero de columnas en este caso 5
 dat.select(dat.columns.slice(0,5).map(m=>col(m)):_*).show()
 // numero de renglones en este caso 5
 dat.show(5)
 
-//7.-Transformacion para datos categoricos y etiquetas a clasificar
+//6.-Transformacion para datos categoricos y etiquetas a clasificar
 //etiqueta
 val labelIndexer = new StringIndexer().setInputCol("species").setOutputCol("label").fit(dat)
 var dat1=labelIndexer.transform(dat)
@@ -38,12 +38,13 @@ dat.select("Species").groupBy("Species").count().show()
 // and output of size 3 (classes)
 val layers = Array[Int](4, 5, 4, 3)
 
+//7-.Construya el modelo
 // Crea el modelo ajustado a los parametros
 val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
 
 // Entrenar el modelo
 val model = trainer.fit(train)
-
+//8.- Resultados del modelo
 // Se prueba el modelo
 //val result = model.transform(test)
 val result = model.transform(test).select(col("*"),col("prediction").as("predictionIndex", data.schema("label").metadata))

@@ -1,6 +1,7 @@
 # Evaluation 2
 
-# Exercise 1
+# Libraries
+
 
 ```scala
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
@@ -8,21 +9,21 @@ import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer, VectorAssembler}
 ```
 
-# Exercise 2
-
+# Load DataSet
+This dataset brings us features about 3 iris flowers variants
 ```scala
 //1.- Carga el dataset
 val dat = spark.read.option("header", "true").option("inferSchema","true")csv("iris.csv")
 ```
 
-# Exercise 3
+# Show Columns
 
 ```scala
 //2.- Nombre de las columnas
 println(dat.columns.toSeq)
 ```
 
-# Exercise 4
+# Show Schema
 
 ```scala
 //3.- Esquema
@@ -30,14 +31,14 @@ println(dat.schema)
 dat.printSchema()
 ```
 
-# Exercise 5
+# use describe() Method
 
 ```scala
 //5.-Utilizar el metodo describe
 dat.describe().show()
 ```
 
-# Exercise 6
+# Show the first 5 columns
 
 ```scala
 //6.- mostrar numero de columnas en este caso 5
@@ -46,7 +47,7 @@ dat.select(dat.columns.slice(0,5).map(m=>col(m)):_*).show()
 dat.show(5)
 ```
 
-# Exercise 7
+# Transform the data into categories and labels using indexers
 
 ```scala
 //7.-Transformacion para datos categoricos y etiquetas a clasificar
@@ -58,8 +59,7 @@ val featureIndexer = new VectorAssembler().setInputCols(Array("sepal_length","se
 var data=featureIndexer.transform(dat1)
 ```
 
-# Exercise 8
-
+# split dataset into train and test
 ```scala
 // Separa el dataset en train y test
 val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
@@ -69,7 +69,7 @@ val test = splits(1)
 dat.select("Species").groupBy("Species").count().show()
 ```
 
-# Exercise 9
+# Create the layer description
 
 ```scala
 // Especifica las capas de la red neuronal
@@ -78,21 +78,20 @@ dat.select("Species").groupBy("Species").count().show()
 val layers = Array[Int](4, 5, 4, 3)
 ```
 
-# Exercise 10
-
+# Create model description
 ```scala
 // Crea el modelo ajustado a los parametros
 val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
 ```
 
- # Exercise 11
+# Train model
 
 ```scala
 // Entrenar el modelo
 val model = trainer.fit(train)
 ```
 
-# Exercise 12
+# Extract results from the model using test dataset.
 
 ```scala
 // Se prueba el modelo
@@ -111,3 +110,4 @@ println(s"Num de datos de prueba = ${(prediction.count())}")
 println(s"Predicciones correctas = ${(prediction.where("predictedLabel == species").count())}")
 println(s"Predicciones fallidas = ${(prediction.where("predictedLabel != species").count())}")
 ```
+![Alt text](Images/new.png)
