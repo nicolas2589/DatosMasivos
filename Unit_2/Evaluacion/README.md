@@ -15,7 +15,7 @@ This dataset brings us features about 3 iris flowers variants
 //1.- Carga el dataset
 val dat = spark.read.option("header", "true").option("inferSchema","true")csv("iris.csv")
 ```
-
+![Alt text](Images/flower.png)
 # Show Columns
 
 ```scala
@@ -70,7 +70,7 @@ dat.select("Species").groupBy("Species").count().show()
 ```
 
 # Create the layer description
-
+we can define the layer using an array, this array contains the input layer, the output layer, and the hidden layers.
 ```scala
 // Especifica las capas de la red neuronal
 // input layer of size 4 (features), two intermediate of size 5 and 4
@@ -79,6 +79,7 @@ val layers = Array[Int](4, 5, 4, 3)
 ```
 
 # Create model description
+set the layer description to the model, also we define the setBlockSize parameter to have more entries per iteration, the iteration its defined in the setMaxIter parameter, and the setSeed parameter takes a number to create randomness.
 ```scala
 // Crea el modelo ajustado a los parametros
 val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
@@ -92,7 +93,7 @@ val model = trainer.fit(train)
 ```
 
 # Extract results from the model using test dataset.
-
+We can use the test dataset to obtain results from the model. we can also use the following code in select() functionto create a new column that inherits metadata from the dataset data, this will help to translate the index to the original label.
 ```scala
 // Se prueba el modelo
 //val result = model.transform(test)
