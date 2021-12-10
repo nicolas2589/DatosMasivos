@@ -79,8 +79,7 @@ val  ensamblador  = ( nuevo  VectorAssembler ()
 val  Array (entrenamiento, prueba) = logregdata.randomSplit ( Array ( 0.7 , 0.3 ), semilla =  12345 )
 ```
 
-## Configure a Pipeline
-
+# Configure a Pipeline
 
 ## We import Pipeline
 ```scala
@@ -107,7 +106,7 @@ val  model  = pipeline.fit (entrenamiento)
 val  resultados  = model.transform (prueba)
 ```
 
-## Model evaluation
+# Model evaluation
 
 ## We import MulticlassMetrics
 ```scala
