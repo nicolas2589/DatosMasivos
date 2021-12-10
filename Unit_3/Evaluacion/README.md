@@ -48,6 +48,8 @@ val  modelo  = kmeans.fit (datos)
 ```
 
 # Within the set of the sum of squared errors
+SSE refers to the sum of the squared differences between each observation and the group average, it is used to measure the variation of the cluster.
+and finally the centroids are printed.
 ```scala
 //   Dentro del conjunto de la suma de errores al cuadrado
 val  WSSSE  = model.computeCost (datos)
