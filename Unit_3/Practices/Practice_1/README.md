@@ -1,6 +1,6 @@
 # Practice 1
 
-# Tome los datos
+# Take the data
 
 ## Import a SparkSession with the Logistic Regression library
 ```scala
@@ -29,7 +29,7 @@ val data  = spark.read.option("header","true").option("inferSchema", "true").for
 data.printSchema()
 ```
 
-# Despligue los datos
+# Deploy the data
 
 ## Print an example line
 ```scala
