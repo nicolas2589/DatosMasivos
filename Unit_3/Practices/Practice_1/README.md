@@ -58,13 +58,85 @@ val logregdata = timedata.select(data("Clicked on Ad").as("label"), $"Daily Time
 val timedata = data.withColumn("Hour",hour(data("Timestamp")))
 ```
 
-## 
 ```scala
-
+val  logregdata  = timedata.select (data ( "Se hizo clic en el anuncio " ) .as ( " etiqueta " ), $ " Tiempo diario invertido en el sitio " , $ " Edad " , $ " Ingresos del área " , $ " Uso diario de Internet " , $ " Hora " , $ " Hombre " )
 ```
-## 
+## We import VectorAssembler and Vectors
 ```scala
-
+importar  org . apache . chispa . ml . característica . VectorAssembler
+importar  org . apache . chispa . ml . linalg . Vectores
 ```
 
+## We create a new VectorAssembler object called assembler for the features
+```scala
+val  ensamblador  = ( nuevo  VectorAssembler ()
+                  .setInputCols ( Array ( " Tiempo diario de permanencia en el sitio " , " Edad " , " Ingresos del área " , " Uso diario de Internet " , " Hora " , " Hombre " ))
+                  .setOutputCol ( " características " ))
 ```
+
+## We use randomSplit to create train and test data divided into 70/30
+```scala
+val  Array (entrenamiento, prueba) = logregdata.randomSplit ( Array ( 0.7 , 0.3 ), semilla =  12345 )
+```
+
+## Configure a Pipeline
+
+
+## We import Pipeline
+```scala
+importar  org . apache . chispa . ml . Tubería
+```
+
+## We create a new LogisticRegression object called "lr"
+```scala
+val  lr  =  nueva  regresión logística ()
+```
+
+## We create a new pipeline with the elements: assembler, "lr"
+```scala
+val  pipeline  =  new  Pipeline () .setStages ( Array (ensamblador, lr))
+```
+
+## We adjust the pipeline for the training set.
+```scala
+val  model  = pipeline.fit (entrenamiento)
+```
+
+## We take the results in the test set with "transform"
+```scala
+val  resultados  = model.transform (prueba)
+```
+
+## Model evaluation
+
+## We import MulticlassMetrics
+```scala
+importar  org . apache . chispa . mllib . evaluación . MulticlassMetrics
+```
+
+## We convert the test results into RDD using .as and .rdd
+```scala
+val  predictionAndLabels  = results.select ($ " prediction " , $ " label " ) .as [( Double , Double )]. rdd
+```
+
+## We initialize a MulticlassMetrics object
+```scala
+val  metrics  =  new  MulticlassMetrics (predictionAndLabels)
+```
+
+## We print Confusion matrix
+```scala
+println ( " Matriz de confusión: " )
+println (metrics.confusionMatrix)
+
+metrics.accuracy
+```
+
+
+
+
+
+
+
+
+
