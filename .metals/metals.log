@@ -3309,3 +3309,13 @@ INFO  shutting down Metals
 INFO  time: initialize in 0.35s
 WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
+INFO  time: initialize in 0.51s
+WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
+INFO  no build target: using presentation compiler with only scala-library
+INFO  shutting down Metals
+INFO  time: initialize in 0.41s
+WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
+WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+INFO  no build target: using presentation compiler with only scala-library

@@ -10,17 +10,17 @@ import org.apache.spark.ml.feature.{VectorIndexer, VectorAssembler}
 
 # Load Dataset
 ``` scala
-//2.Load the data stored 
+//2.Load the data stored
 val dataset = spark.read.option("header", "true").option("inferSchema","true")csv("data.csv")
 ```
 
-# Get desired data 
+# Get desired data
 ``` scala
-//3.Get desired data from the dataset 
+//3.Get desired data from the dataset
 val feature_data = dataset.select("Fresh", "Milk", "Grocery", "Frozen", "Detergents_Paper","Delicassen")
 ```
 
-# Generate a vector 
+# Generate a vector
 ``` scala
 // 4.Generate an assembler vector of dataset features
 val featureIndexer = new VectorAssembler().setInputCols(Array("Fresh", "Milk", "Grocery", "Frozen", "Detergents_Paper",
@@ -61,4 +61,14 @@ println ( s " Dentro de la suma establecida de errores al cuadrado = $ WS SSE " 
 // Muestra el resultado.
 println ( " Cluster Centers: " )
 model.clusterCenters.foreach (println)
+```
+# Results
+We can finally display the results showing us the cluster centers and the wssse or variance of the cluster.
+We find 3 centroids with 6 numbers, this means 6 differents features are evaluated in the process.
+```console
+Within Set Sum of Squared Errors = 8.095172370767671E10
+Cluster Centers:
+[7993.574780058651,4196.803519061584,5837.4926686217,2546.624633431085,2016.2873900293255,1151.4193548387098]
+[9928.18918918919,21513.081081081084,30993.486486486487,2960.4324324324325,13996.594594594595,3772.3243243243246]
+[35273.854838709674,5213.919354838709,5826.096774193548,6027.6612903225805,1006.9193548387096,2237.6290322580644]
 ```
