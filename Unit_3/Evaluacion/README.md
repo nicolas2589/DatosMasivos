@@ -22,18 +22,19 @@ val feature_data = dataset.select("Fresh", "Milk", "Grocery", "Frozen", "Deterge
 
 # Generate a vector 
 ``` scala
-// Generate an assembler vector of dataset features
+// 4.Generate an assembler vector of dataset features
 val featureIndexer = new VectorAssembler().setInputCols(Array("Fresh", "Milk", "Grocery", "Frozen", "Detergents_Paper",
 "Delicassen")).setOutputCol("features")
 ```
 
-# duplicate the data set
+# Duplicate the data set
 ```scala
-// aplicar el conjunto de datos del ensamblador de vectores
+// 5.aplicar el conjunto de datos del ensamblador de vectores
 var  data = featureIndexer.transform (feature_data)
 ```
 
 # Generate KMeans model
+This is responsible for grouping objects in k (assigned variable) groups based on their characteristics.
 ```scala
 // Generar modelo KMeans para clustering indicando cuandos clusters se crearan y una semilla de aleatoriedad
 // En este caso no se busca la prediccion de una variable dependiente por lo que no se asigna
