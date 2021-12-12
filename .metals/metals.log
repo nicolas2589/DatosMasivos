@@ -3319,3 +3319,10 @@ WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The mo
 WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
 WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 INFO  no build target: using presentation compiler with only scala-library
+INFO  time: initialize in 0.48s
+WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
+INFO  shutting down Metals
+INFO  time: initialize in 0.34s
+WARN  no build tool detected in workspace '/home/uwuntu/DM/DatosMasivos'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+WARN  no build target: /home/uwuntu/DM/DatosMasivos/Unit_3/Evaluacion/Test1Ev.scala
