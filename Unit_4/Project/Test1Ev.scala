@@ -8,7 +8,7 @@ import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 
 // Carga el dataset
 var dat = spark.read.option("header", "true").option("inferSchema","true").option("delimiter", ";")csv("bank-full.csv")
-
+dat = dat.withColumnRenamed("y","label")
 // Esquema
 dat.printSchema()
 
@@ -16,7 +16,7 @@ dat.printSchema()
 dat.show()
 
 // se genera variables que ayudara a realizar la categorizacion de datos
-val y = "y"
+val y = "label"
 val columns = dat.columns
 val numCols = dat.columns.size
 var indexedcolumns = new Array[String](numCols)
@@ -44,7 +44,7 @@ var data=featureIndexer.transform(idat)
 // Se limpia el dataset para tener solo el label y features
 data = data.select("indexedLabel","indexedFeatures")
 
-///////////////////////DecisionTreeClassifier/////////////////////////////////
+/////////////////////DecisionTreeClassifier/////////////////////////////////
 for( x <- 0 to 29 ){
   // separar los datos en entrenamiento y prueba
   val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3))
@@ -96,7 +96,7 @@ for( x <- 0 to 29 ){
   // Genera las capas del modelo
   // input layer of size 16 (features), two intermediate of size 10 and 5
   // and output of size 2 (classes)
-  val layers = Array[Int](17, 10, 10, 2)
+  val layers = Array[Int](16, 10, 10, 2)
   // Generar modelo de MultilayerPerceptronClassifier
   val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(2589L).setMaxIter(100).setLabelCol("indexedLabel").setFeaturesCol("indexedFeatures")
   // Entrenar
