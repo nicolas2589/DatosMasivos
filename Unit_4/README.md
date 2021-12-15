@@ -20,7 +20,7 @@ dat = dat.withColumnRenamed("y","label")
 dat.printSchema()
 ```
 
-# show dataset
+# Show dataset
 ```scala
 // mostrar el dataset
 dat.show()
