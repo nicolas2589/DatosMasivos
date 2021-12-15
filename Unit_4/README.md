@@ -1,3 +1,7 @@
+ # Evaluation 3
+
+# Libraries
+``` scala
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
 import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorIndexer, VectorAssembler}
 //Librerias de modelos de classificacion
@@ -5,22 +9,35 @@ import org.apache.spark.ml.classification.DecisionTreeClassifier
 import org.apache.spark.ml.classification.LinearSVC
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
+```
 
+# Load Dataset
+``` scala
 // Carga el dataset
 var dat = spark.read.option("header", "true").option("inferSchema","true").option("delimiter", ";")csv("bank-full.csv")
 dat = dat.withColumnRenamed("y","label")
 // Esquema
 dat.printSchema()
+```
 
+# show dataset
+```scala
 // mostrar el dataset
 dat.show()
+```
 
+# Support variables for data cleansing
+```scala
 // se genera variables que ayudara a realizar la categorizacion de datos
 val y = "label"
 val columns = dat.columns
 val numCols = dat.columns.size
 var indexedcolumns = new Array[String](numCols)
 var i = 0
+```
+
+# Cycle that iterates through each column of the dataset and indexes each column
+```scala
 // Genera la categorizacion de datos a cada columna y almacena el nombre de las nuevas columnas para uso posterior
 for( x <- columns ){
    var labelIndexer = new StringIndexer().setInputCol(x).setOutputCol(x + "_index").fit(dat)
@@ -28,22 +45,38 @@ for( x <- columns ){
    indexedcolumns(i)=x + "_index"
    i+=1
 }
+```
+
+# Select only indexed columns for further use
+```scala
 //Utilizando expresiones regulares, obtener un dataset con todos los datos indexados
 var idat=dat.select(dat.colRegex("`^.*_index*`"))
+```
 
+# It takes the previously specified independent variable and changes its name for later use, its name is also removed from the list of indexed columns
+```scala
 // Se cambia el nombre de la columna de la variable independiente y se elimina su nombre de la lista de columnas
 idat = idat.withColumnRenamed(y + "_index","indexedLabel")
 val indexedcolumnsfeatures = indexedcolumns.filter(! _.contains(y + "_index"))
+```
 
+# An assembler vector is generated that joins each of the indexed columns to later be treated as characteristics.
+```scala
 // Generar vector assembler de los datos previamente indexados
 val featureIndexer = new VectorAssembler().setInputCols(indexedcolumnsfeatures).setOutputCol("indexedFeatures")
 
 // Aplica el vector assembler utilizando el dataset
 var data=featureIndexer.transform(idat)
+```
 
+# The dataset is cleaned to have only the label and features
+```scala
 // Se limpia el dataset para tener solo el label y features
 data = data.select("indexedLabel","indexedFeatures")
+```
 
+# DecisionTreeClassifier algorithm application
+```scala
 /////////////////////DecisionTreeClassifier/////////////////////////////////
 for( x <- 0 to 29 ){
   // separar los datos en entrenamiento y prueba
@@ -58,7 +91,10 @@ for( x <- 0 to 29 ){
   var accuracy = evaluator.evaluate(predictions)
   println("Iteracion " + (x+1) + "," + (1.0 - accuracy) + "," + accuracy + "," + (predictions.where("prediction == indexedLabel").count()) + "," + (predictions.where("prediction != indexedLabel").count()))
 }
+```
 
+# Application of the SupportVectorMachine algorithm
+```scala
 /////////////////////////SupportVectorMachine/////////////////////////////////
 for( x <- 0 to 29 ){
   // separar los datos en entrenamiento y prueba
@@ -73,7 +109,10 @@ for( x <- 0 to 29 ){
   var accuracy = evaluator.evaluate(predictions)
   println("Iteracion " + (x+1) + "," + (1.0 - accuracy) + "," + accuracy + "," + (predictions.where("prediction == indexedLabel").count()) + "," + (predictions.where("prediction != indexedLabel").count()))
 }
+```
 
+# Application of the Multinomial Logistic Regression algorithm
+```scala
 ////////////////////Multinomial Logistic Regression///////////////////////////
 for( x <- 0 to 29 ){
   // separar los datos en entrenamiento y prueba
@@ -88,7 +127,10 @@ for( x <- 0 to 29 ){
   var accuracy = evaluator.evaluate(predictions)
   println("Iteracion " + (x+1) + "," + (1.0 - accuracy) + "," + accuracy + "," + (predictions.where("prediction == indexedLabel").count()) + "," + (predictions.where("prediction != indexedLabel").count()))
 }
+```
 
+# Application of the Multilayer Perceptron algorithm
+```scala
 //////////////////////////Multilayer Perceptron///////////////////////////////
 for( x <- 0 to 29 ){
   // separar los datos en entrenamiento y prueba
@@ -107,3 +149,4 @@ for( x <- 0 to 29 ){
   var accuracy = evaluator.evaluate(predictions)
   println("Iteracion " + (x+1) + "," + (1.0 - accuracy) + "," + accuracy + "," + (predictions.where("prediction == indexedLabel").count()) + "," + (predictions.where("prediction != indexedLabel").count()))
 }
+```
