@@ -12,6 +12,10 @@ import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 ```
 
 # Load Dataset
+Dataset description
+[external link to archive.ics.uci.edu] (https://archive.ics.uci.edu/ml/datasets/Bank+Marketing)
+
+
 ``` scala
 // Carga el dataset
 var dat = spark.read.option("header", "true").option("inferSchema","true").option("delimiter", ";")csv("bank-full.csv")
