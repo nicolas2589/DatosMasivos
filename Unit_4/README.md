@@ -20,14 +20,6 @@ external link https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
 // Carga el dataset
 var dat = spark.read.option("header", "true").option("inferSchema","true").option("delimiter", ";")csv("bank-full.csv")
 dat = dat.withColumnRenamed("y","label")
-// Esquema
-dat.printSchema()
-```
-
-# Show dataset
-```scala
-// mostrar el dataset
-dat.show()
 ```
 
 # Support variables for data cleansing
